@@ -1,13 +1,134 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <title>QuoteSwitch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" class="app">
+      <div class="app__head">
+        <h1 class="app__title">Quote Switcher</h1>
+        <p class="app__description">This is a simple web-based tool that allows you to convert and format JavaScript/JSON-like objects with flexible quote and formatting options.</p>
+      </div>
+      <div class="app__action">
+        <div class="app__switcher">
+          <h2 class="app__switcherTitle">Key</h2>
+          <ul class="app__switcherList">
+            <li class="app__switcherItem">
+              <button
+                class="app__switcherButton"
+                data-key-quote="double"
+                type="button"
+              >Double</button>
+            </li>
+            <li class="app__switcherItem">
+              <button
+                class="app__switcherButton"
+                data-key-quote="single"
+                type="button"
+              >Single</button>
+            </li>
+            <li class="app__switcherItem">
+              <button
+                class="app__switcherButton"
+                data-key-quote="none"
+                type="button"
+              >None</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="app__switcher">
+          <h2 class="app__switcherTitle">Value</h2>
+          <ul class="app__switcherList">
+            <li class="app__switcherItem">
+              <button
+                class="app__switcherButton"
+                data-value-quote="double"
+                type="button"
+              >Double</button>
+            </li>
+            <li class="app__switcherItem">
+              <button
+                class="app__switcherButton"
+                data-value-quote="single"
+                type="button"
+              >Single</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="app__switcher">
+          <h2 class="app__switcherTitle">Format</h2>
+          <ul class="app__switcherList">
+            <li class="app__switcherItem">
+              <button
+                class="app__switcherButton"
+                data-format="pretty"
+                type="button"
+              >Pretty</button>
+            </li>
+            <li class="app__switcherItem">
+              <button
+                class="app__switcherButton"
+                data-format="compact"
+                type="button"
+              >Compact</button>
+            </li>
+            <li class="app__switcherItem">
+              <button
+                class="app__switcherButton"
+                data-format="raw"
+                type="button"
+              >Raw</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="app__body">
+        <div class="app__bodyItem">
+          <div class="app__bodyItemHead">
+            <h3 class="app__bodyItemTitle">Enter Your Code</h3>
+          </div>
+          <div class="app__bodyItemBody">
+            <textarea id="js-input" class="app__textarea">
+[
+  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
+  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
+  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
+  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
+  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+]
+            </textarea>
+          </div>
+        </div>
+        <div class="app__bodyItem">
+          <div class="app__bodyItemHead">
+            <h3 class="app__bodyItemTitle">Output</h3>
+            <div class="app__copy">
+              <button id="js-copyButton" class="app__copyButton">
+                <span class="app__copyButtonIcon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16"><!-- Icon from Codicons by Microsoft Corporation - https://github.com/microsoft/vscode-codicons/blob/main/LICENSE --><g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 4l1-1h5.414L14 6.586V14l-1 1H5l-1-1zm9 3l-3-3H5v10h8z"/><path d="M3 1L2 2v10l1 1V2h6.414l-1-1z"/></g></svg>
+                </span>
+                <span class="app__copyButtonLabel">Copy code</span>
+              </button>
+              <div id="js-toast" class="app__toast"></div>
+            </div>
+          </div>
+          <div class="app__bodyItemBody">
+            <pre id="js-output" class="app__pre"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

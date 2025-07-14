@@ -1,0 +1,183 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding: 0.4rem;
+}
+
+.app__head {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2.4rem;
+  padding-top: 0.1rem;
+}
+
+.app__title {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.08rem;
+  word-spacing: -0.08rem;
+}
+
+.app__description {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.02rem;
+  word-spacing: -0.04rem;
+}
+
+.app__action {
+  // display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  gap: 4rem;
+  margin-top: 3.2rem;
+}
+
+.app__switcher {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.app__switcherTitle {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: -0.02rem;
+  text-transform: uppercase;
+}
+
+.app__switcherList {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.app__switcherItem {
+  font-size: 12px;
+  position: relative;
+  &::before,
+  &::after {
+    color: var(--theme-color-black);
+  }
+  &::before {
+    content: '[';
+  }
+  &::after {
+    content: ']';
+  }
+}
+
+.app__switcherButton {
+  font-size: inherit;
+  font-weight: 600;
+  letter-spacing: -0.03rem;
+  text-transform: uppercase;
+  &.active {
+    color: #aaa;
+    pointer-events: none;
+  }
+}
+
+.app__body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  flex-grow: 1;
+  margin-top: 1.6rem;
+}
+
+.app__bodyItemHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.app__bodyItemTitle {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02rem;
+  text-transform: uppercase;
+}
+
+.app__copy {
+  position: relative; // toastの配置のため
+}
+
+.app__copyButton {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.app__copyButtonIcon {
+  width: 1rem;
+  svg {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.app__copyButtonLabel {
+  font-family: monospace;
+  font-size: 0.7rem;
+}
+
+.app__bodyItemBody {
+  margin-top: 1rem;
+}
+
+.app__textarea {
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  field-sizing: content;
+  font-family: monospace;
+  font-size: 0.7rem;
+  min-height: 16lh;
+  padding: 0.6rem;
+  width: 100%;
+}
+
+.app__pre {
+  background: #f5f5f5;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  padding: 0.6rem;
+  white-space: pre-wrap;
+}
+
+.app__toast {
+  border-radius: calc(infinity * 1px);
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: -0.02rem;
+  padding: 0.3em 1.4em;
+  pointer-events: none;
+  position: absolute;
+  top: -3.5em;
+  right: 0;
+  width: max-content;
+  transition:
+    opacity 200ms var(--ease-out-cubic),
+    translate 200ms var(--ease-out-cubic);
+
+  &:not([data-state="show"]) {
+    opacity: 0;
+    translate: 0 .5rem;
+  }
+  &[data-state="show"] {
+    background-color: var(--theme-color-toast);
+    color: var(--theme-color-white);
+    &::before {
+      aspect-ratio: 1 / 1.2;
+      background-color: var(--theme-color-toast);
+      clip-path: polygon(50% 100%,100% 0,0 0);
+      content: '';
+      display: block;
+      height: 8px;
+      position: absolute;
+      right: 30px;
+      bottom: -8px;
+    }
+  }
+}
