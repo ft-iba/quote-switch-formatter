@@ -19,6 +19,11 @@
   word-spacing: -0.08rem;
 }
 
+.app__headBody {
+  display: flex;
+  justify-content: space-between;
+}
+
 .app__description {
   font-size: 12px;
   font-weight: 400;
@@ -26,11 +31,32 @@
   word-spacing: -0.04rem;
 }
 
+.app__githubLink {
+  display: flex;
+  gap: 0.4rem;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.app__githubLinkIcon {
+  width: 1rem;
+  svg {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.app__githubLinkLabel {
+  font-size: 0.7rem;
+}
+
 .app__action {
   // display: grid;
   // grid-template-columns: repeat(3, 1fr);
   display: flex;
-  gap: 4rem;
+  flex-wrap: wrap;
+  gap: 0.4rem 4rem;
   margin-top: 3.2rem;
 }
 
